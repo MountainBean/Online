@@ -1,0 +1,23 @@
+{% extends "photos/base.html" %}
+{% load static %}
+
+{% block title %}
+    All Photos
+{% endblock title %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "photos/index.css" %}">
+{% endblock css_files %}
+
+{% block content %}
+    <ul>
+        {% for photo in uploaded_photos %}
+            <li><img src="{% static "photos/images/"|add:photo.file %}" alt={{ photo.title }}>(Location: {{ photo.location }})</li>
+        {% endfor %}
+    </ul>
+
+    <hr>
+
+    <p>Total Number of Photos: {{ total_number_of_uploaded_photos }}</p>
+    <p>Photos by Samuel J Drew</p>
+{% endblock content %}
