@@ -4,8 +4,8 @@ from django.shortcuts import render
 from .models import Photographer, Photo
 
 
-def index(request):
-    uploaded_photos = Photo.objects.all().order_by("title")
+def starting_page(request):
+    uploaded_photos = Photo.objects.all().order_by("date")
     num_photos = uploaded_photos.count()
     return render(request, "photos/index.html", {
         "uploaded_photos": uploaded_photos,
