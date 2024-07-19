@@ -1,10 +1,11 @@
-ul {
+#latest_photos ul {
   list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
 }
 
-li img {
-  max-width: 14%;
-  height: auto;
-  border: 5px solid white;
-  margin-bottom: 1rem;
+#latest_photos li {
+  flex: 1;
 }

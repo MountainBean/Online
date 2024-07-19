@@ -2,25 +2,21 @@
 {% load static %}
 
 {% block title %}
-    All Photos
+    All My Posts
 {% endblock title %}
 
 {% block css_files %}
-    <link rel="stylesheet" href="{% static "photos/index.css" %}">
+    <link rel="stylesheet" href="{% static "photos/all-photos.css" %}">
     <link rel="stylesheet" href="{% static "photos/photo-post.css" %}">
 {% endblock css_files %}
 
 {% block content %}
-
-    <section id="latest_photos">
+    <section id="all_photos">
+        <h2>All Uploaded Photos</h2>
         <ul>
-            {% for photo in latest_photos %}
+            {% for photo in all_photos %}
                 {% include "photos/includes/photo-post.html" %}
             {% endfor %}
         </ul>
     </section>
-
-    <hr>
-
-    <p>Photos by Samuel J Drew</p>
 {% endblock content %}

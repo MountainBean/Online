@@ -5,9 +5,21 @@ from .models import Photographer, Photo
 
 
 def starting_page(request):
-    uploaded_photos = Photo.objects.all().order_by("date")
-    num_photos = uploaded_photos.count()
+    latest_photos = Photo.objects.all().order_by("-date")[:3]
     return render(request, "photos/index.html", {
-        "uploaded_photos": uploaded_photos,
-        "total_number_of_uploaded_photos": num_photos
+        "latest_photos": latest_photos
+    })
+
+
+def all_photos(request):
+    all_photos = Photo.objects.all().order_by("-date")
+    return render(request, "photos/all-photos.html", {
+        "all_photos": all_photos
+    })
+
+
+def photo_detail(request, slug):
+    target_photo = Photo.objects.get(slug=slug)
+    return render(request, "photos/photo-detail.html", {
+        "photo": target_photo
     })

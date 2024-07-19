@@ -1,0 +1,14 @@
+#summary li {
+  flex: 1;
+  display: flex;
+}
+
+.big_photo img {
+  margin: 0;
+  padding: 1;
+  width: 100%;
+  height: auto;
+  border: 2rem solid white;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
