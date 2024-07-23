@@ -1,5 +1,5 @@
 from datetime import date
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from .models import Photographer, Photo
 
@@ -19,7 +19,7 @@ def all_photos(request):
 
 
 def photo_detail(request, slug):
-    target_photo = Photo.objects.get(slug=slug)
+    target_photo = get_object_or_404(Photo, slug=slug)
     return render(request, "photos/photo-detail.html", {
         "photo": target_photo
     })

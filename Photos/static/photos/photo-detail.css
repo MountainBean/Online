@@ -4,11 +4,21 @@
 }
 
 .big_photo img {
-  margin: 0;
-  padding: 1;
+  margin: 0 0 0;
+  padding: 0 8vw 0;
   width: 100%;
   height: auto;
-  border: 2rem solid white;
+  border: solid white;
   justify-content: center;
-  margin-bottom: 1rem;
+}
+
+.big_photo_details {
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.big_photo_details div {
+  padding: 0 8vw 2rem;
+  text-align: right;
 }
