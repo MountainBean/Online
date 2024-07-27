@@ -16,8 +16,7 @@ class Photographer(models.Model):
 class Photo(models.Model):
     title = models.CharField(max_length=256)
     location = models.CharField(max_length=80)
-    file = models.CharField(max_length=256, null=True)
-    url = models.CharField(max_length=200, null=True)
+    image = models.ImageField(upload_to="images", null=True)
     photographer = models.ForeignKey(
         Photographer, on_delete=models.CASCADE, null=True, related_name="photos")
     date = models.DateField()
