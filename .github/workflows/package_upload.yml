@@ -18,7 +18,7 @@ jobs:
         python-version: '3.12' 
     
     - name: Install Django
-      run: pip install django
+      run: pip install django django-storages
 
     - name: Checkout source code
       uses: actions/checkout@v4
