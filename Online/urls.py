@@ -23,3 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("photos.urls"))
 ]
+if settings.DJANGO_WEBSITE_ENVIRONMENT != "PROD":
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
