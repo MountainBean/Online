@@ -23,7 +23,7 @@ jobs:
     - name: Set version label
       run: |
         short_sha=$(git rev-parse --short "${{ github.sha }}")
-        echo 'version="${{ github.ref_name }}:$short_sha"' >> "$GITHUB_ENV"
+        echo 'version=${{ github.ref_name }}:'$short_sha >> "$GITHUB_ENV"
       
     - name: Collect static files
       run: python manage.py collectstatic
