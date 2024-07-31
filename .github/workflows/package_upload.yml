@@ -8,14 +8,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    
+    - name: Install Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12' 
 
     - name: Checkout source code
       uses: actions/checkout@v4
 
     - name: Get version details
-      run: |
-        export git_hash=$(git rev-parse --short "${{ github.sha }}")
+      run: git_hash=$(git rev-parse --short "${{ github.sha }}")
 
+    - name: Collect static files
+      run: python manage.py collectstatic
 
     - name: Generate deployment package
       run: zip -r deploy.zip . -x '*.git*' 
@@ -27,6 +33,6 @@ jobs:
         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         application_name: my-django-website
         environment_name: My-django-website-env
-        version_label: "${{ github.ref_name }}.$git_hash"
+        version_label: "${{ github.ref_name }}.${git_hash}"
         region: ${{ secrets.AWS_REGION }}
         deployment_package: deploy.zip
