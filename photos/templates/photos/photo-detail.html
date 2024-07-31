@@ -1,0 +1,30 @@
+{% extends "photos/base.html" %}
+{% load static %}
+
+
+{% block title %}
+    {{ post.title }}
+{% endblock title %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "photos/photo-detail.css" %}">
+{% endblock css_files %}
+
+{% block content %}
+    <section id="summary">
+        <h2>{{ post.title }}</h2>
+        <article class="big_photo">
+            <img src="{{ photo.image.url }}" alt="{{ photo.title }}">
+        </article>
+        <article class="big_photo_details">
+            <div>
+                <address>By {{ photo.photographer }}</address>
+            </div>
+            <div>
+                Taken on <time>{{ photo.date|date:"d M Y" }}</time>
+                <br>
+                {{ photo.location }}
+            </div>
+        </article>
+    </section>
+{% endblock content %}
