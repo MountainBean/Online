@@ -12,6 +12,11 @@ jobs:
     - name: Checkout source code
       uses: actions/checkout@v4
 
+    - name: Get version details
+      run: |
+        export git_hash=$(git rev-parse --short "${{ github.sha }}")
+
+
     - name: Generate deployment package
       run: zip -r deploy.zip . -x '*.git*' 
 
@@ -22,6 +27,6 @@ jobs:
         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         application_name: my-django-website
         environment_name: My-django-website-env
-        version_label: "1.4"
+        version_label: "${{ github.ref_name }}.$git_hash"
         region: ${{ secrets.AWS_REGION }}
         deployment_package: deploy.zip
