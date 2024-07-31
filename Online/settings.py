@@ -138,16 +138,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_ROOT = BASE_DIR / "uploads"
 
 MEDIA_URL = "/photo_files/"
+if DJANGO_WEBSITE_ENVIRONMENT == "PROD" or DJANGO_WEBSITE_ENVIRONMENT == "BUILD":
+    AWS_STORAGE_BUCKET_NAME = "mountainbean-photos-bucket-shepherds-pie"
+    AWS_S3_REGION_NAME = "ap-southeast-2"
+    AWS_ACCESS_KEY_ID = getenv("S3_WRITE_USER_ACCESS_KEY")
+    AWS_SECRET_ACCESS_KEY = getenv("S3_WRITE_SECRET_ACCESS_KEY")
 
-AWS_STORAGE_BUCKET_NAME = "mountainbean-photos-bucket-shepherds-pie"
-AWS_S3_REGION_NAME = "ap-southeast-2"
-AWS_ACCESS_KEY_ID = getenv("S3_WRITE_USER_ACCESS_KEY")
-AWS_SECRET_ACCESS_KEY = getenv("S3_WRITE_SECRET_ACCESS_KEY")
+    AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
 
-AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+    STATICFILES_FOLDER = "static"
+    MEDIAFILES_FOLDER = "media"
 
-STATICFILES_FOLDER = "static"
-MEDIAFILES_FOLDER = "media"
-
-STATICFILES_STORAGE = "custom_storages.StaticFileStorage"
-DEFAULT_FILE_STORAGE = "custom_storages.MediaFileStorage"
+    STATICFILES_STORAGE = "custom_storages.StaticFileStorage"
+    DEFAULT_FILE_STORAGE = "custom_storages.MediaFileStorage"
