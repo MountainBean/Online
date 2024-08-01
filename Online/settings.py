@@ -146,8 +146,17 @@ if DJANGO_WEBSITE_ENVIRONMENT == "PROD" or DJANGO_WEBSITE_ENVIRONMENT == "BUILD"
 
     AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
 
-    STATICFILES_FOLDER = "static"
-    MEDIAFILES_FOLDER = "media"
-
-    STATICFILES_STORAGE = "custom_storages.StaticFileStorage"
-    DEFAULT_FILE_STORAGE = "custom_storages.MediaFileStorage"
+    STORAGES = {
+        "default": {
+            "BACKEND": "storages.backends.s3.S3Storage",
+            "OPTIONS": {
+                "location": "media"
+            },
+        },
+        "staticfiles": {
+            "BACKEND": "storages.backends.s3.S3Storage",
+            "OPTIONS": {
+                "location": "static"
+            }
+        }
+    }
