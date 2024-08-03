@@ -20,7 +20,7 @@ jobs:
         python-version: '3.12' 
     
     - name: Install Django
-      run: pip install django django-storages boto3
+      run: pip install django django-storages boto3 pillow
 
     - name: Checkout source code
       uses: actions/checkout@v4
