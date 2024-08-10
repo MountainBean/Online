@@ -21,7 +21,8 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", include("photos.urls"))
+    path("photos/", include("photos.urls")),
+    path("", include("samjd.urls"))
 ]
 if settings.DJANGO_WEBSITE_ENVIRONMENT != "PROD":
     urlpatterns += static(settings.MEDIA_URL,

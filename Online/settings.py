@@ -41,6 +41,7 @@ if DJANGO_WEBSITE_ENVIRONMENT != "PROD":
 
 INSTALLED_APPS = [
     'photos',
+    'samjd',
     'storages',
     'django.contrib.admin',
     'django.contrib.auth',

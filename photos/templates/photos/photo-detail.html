@@ -17,13 +17,13 @@
             <img src="{{ photo.image.url }}" alt="{{ photo.title }}">
         </article>
         <article class="big_photo_details">
-            <div>
+            <div class="big_photo_details__div_left">
+                <p>"{{ photo.title }}"</p>
                 <address>By {{ photo.photographer }}</address>
             </div>
-            <div>
-                Taken on <time>{{ photo.date|date:"d M Y" }}</time>
-                <br>
-                {{ photo.location }}
+            <div class="big_photo_details__div_right">
+                <p>Taken on <time>{{ photo.date|date:"d M Y" }}</time></p>
+                <p>{{ photo.location }}</p>
             </div>
         </article>
     </section>

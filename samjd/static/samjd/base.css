@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Oswald", sans-serif;;
+}
+
+.sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 300px;
+    background-color: #c8c8c8;
+}
+
+.main-content {
+    position: relative;
+    min-height: 100vh;
+    top: 0;
+    left: 300px;
+    width: calc(100% - 300px);
+    padding: 1rem;
+  }
+
+.sidebar .tabs {
+    padding: 0.5rem 1.3rem 0;
+    background-color: #a9a9a9;
+}
+
+.sidebar .tabs i {
+    background-color: #c8c8c8;
+    font-size: 135%;
+    height: 2.1rem;
+    width: 3rem;
+    color: #7b7b7b;
+    text-align: center;
+    padding: 0.4rem 0;
+    border-radius: 8px 8px 0 0;
+}
+
+.sidebar .logo {
+    padding: 2rem 1rem;
+}
+
+.sidebar .logo span {
+    font-family: "Oswald", sans-serif;
+    font-size: 2.5rem;
+    color: #4a4a4a;
+    animation: fadeInAnimation ease 1s;
+}
+
+.user img,
+.user div {
+    width: 100%;
+    padding: 0 10%;
+    animation: fadeInAnimation ease 1s;
+}
+
+.sidebar ul {
+    padding: 2rem 1rem;
+}
+
+.sidebar ul li {
+    list-style-type: none;
+    position: relative;
+    width: 90%;
+    margin: 0.1rem auto;
+    line-height: 50px
+}
+
+.sidebar ul li a {
+    color: #4a4a4a;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 0.8rem;
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+
+.sidebar ul li a:hover {
+    background-color: #eeeeee;
+    color: #323232;
+    transition: 0.3s ease;
+}
+
+.sidebar ul li a i {
+    min-width: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.sidebar.projects .aboutme {
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    animation: fadeInAnimation ease 1s;
+}
+
+.sidebar.aboutme .projects {
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    animation: fadeInAnimation ease 1s;
+}
+
+
+.sidebar.aboutme #projects-btn {
+    cursor: pointer;
+    background-color: #a9a9a9;
+}
+
+.sidebar.aboutme #projects-btn:hover,
+.sidebar.aboutme #aboutme-btn {
+    color: #5b5b5b;
+}
+
+.sidebar.projects #aboutme-btn {
+    cursor: pointer;
+    background-color: #a9a9a9;
+}
+
+.sidebar.projects #aboutme-btn:hover,
+.sidebar.projects #projects-btn {
+    color: #5b5b5b;
+}
+
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOutAnimation {
+    100% {
+        opacity: 1;
+    }
+    0% {
+        opacity: 0;
+    }
+}

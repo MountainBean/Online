@@ -18,7 +18,21 @@
   justify-content: space-between;
 }
 
-.big_photo_details div {
-  padding: 0 8vw 2rem;
+.big_photo_details__div_left p,
+.big_photo_details__div_left address {
+  margin: 0;
+  padding: 0 8vw;
+  text-align: left;
+  font-style: italic;
+}
+
+.big_photo_details__div_right p {
+  margin: 0;
+  padding: 0 8vw;
   text-align: right;
 }
+
+.big_photo_details div {
+  margin-bottom: 4rem;
+}
+
