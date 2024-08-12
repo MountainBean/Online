@@ -16,7 +16,7 @@
     <div class="sidebar aboutme">
         <div class="tabs">
             <i class="bx bx-menu" id="aboutme-btn"></i>
-            <i class="bx bxs-wrench" id="projects-btn"></i>
+            <i class="bx bxs-wrench" id="pages-btn"></i>
         </div>
         <div class="top aboutme">
             <div class="logo">
@@ -25,11 +25,9 @@
         </div>
         <div class="user aboutme">
             <img src="{% static "samjd/images/samjd_srsly.jpg" %}" alt="about-me">
-            <div>
-                <p class="caption">I'm Sam Drew, a software developer in Wellington</p>
-            </div>
+            <p class="caption">I'm Sam Drew, a software developer in Wellington</p>
         </div>
-        <ul class="projects">
+        <ul class="pages">
             <li>
                 <a href="#">
                     <i class="bx bxs-folder-open"></i>
@@ -43,18 +41,21 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{% url "starting-page" %}">
                     <i class="bx bxs-camera"></i>
                     <span class="nav-item">photography</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="https://blog.mountainbean.online/">
                     <i class="bx bx-pen"></i>
                     <span class="nav-item">blog</span>
                 </a>
             </li>
         </ul>
+        <div class="pages this-website">
+            <p>Website written in Django and hosted on Elastic Beanstalk. I built this and my photography website to learn to use Django effectively.</p>
+        </div>
     </div>
     <div class="main-content">
         {% block content %}{% endblock content %}
@@ -62,19 +63,19 @@
 </body>
 <script>
     let aboutmebtn = document.querySelector('#aboutme-btn');
-    let projectsbtn = document.querySelector('#projects-btn');
+    let pagesbtn = document.querySelector('#pages-btn');
     let sidebar = document.querySelector('.sidebar');
 
-    projectsbtn.onclick = function () {
+    pagesbtn.onclick = function () {
         if (sidebar.classList.contains('aboutme')) {
             sidebar.classList.toggle('aboutme');
-            sidebar.classList.toggle('projects');
+            sidebar.classList.toggle('pages');
         };
     };
     aboutmebtn.onclick = function () {
         if (!sidebar.classList.contains('aboutme')) {
             sidebar.classList.toggle('aboutme');
-            sidebar.classList.toggle('projects');
+            sidebar.classList.toggle('pages');
         };
     };
 
