@@ -1,0 +1,84 @@
+h1, h2, h3 {
+    color: #4a4a4a;
+}
+
+.construction {
+    height: 80%;
+    margin-left: 6.5rem;
+    margin-top: 2rem;
+}
+
+.construction ul {
+    margin-top: 4rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+    height: 100%;
+}
+
+.construction ul a li {
+    list-style: none;
+}
+
+.construction ul a {
+    text-decoration: none;
+    height: 9rem;
+    flex: 0 0 20rem;
+    background: linear-gradient(to right, #e1e1e1, #eeeeee);
+    border-radius: 14px;
+    overflow: hidden;
+    padding: 1rem;
+    box-shadow: 6px 2px 8px #bbbbbb;
+}
+
+.construction ul a:hover {
+    background: linear-gradient(to right, #d5d5d5, #efefef);
+    box-shadow: 8px 3px 10px #bebebe;
+    transition: all ease 0.5s;
+}
+
+.construction ul li p {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    line-height: 1.6rem;
+    color: #5a5a5a;
+}
+
+.construction ul .call-to-blog {
+    background: linear-gradient(to right, #e1e1e1, #ffffff);
+    border-radius: 14px;
+    overflow: hidden;
+    padding: 1rem;
+    box-shadow: 6px 2px 8px #bbbbbb;
+}
+
+.construction ul .call-to-blog li {
+    height: 100%;
+}
+
+.construction ul .call-to-blog div {
+    padding: 2rem 1rem;
+}
+
+.construction ul .call-to-blog p {
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+.hr-solid {
+    margin: 2rem;
+    border-style: none;
+    border-top: 2px solid #f5f5f5;
+}
+
+@media (max-width: 800px) {
+    .construction ul {
+        flex-direction: column;
+    }
+    
+    .construction ul a {
+        height: 2rem;
+        flex: 0 0 7rem;
+    }
+}

@@ -6,9 +6,9 @@
   justify-content: center;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: 1rem;
 }
 
 #all_photos li {
   flex: 1;
+  margin: 0;
 }

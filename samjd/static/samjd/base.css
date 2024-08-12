@@ -1,0 +1,196 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Oswald", sans-serif;;
+}
+
+.sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 300px;
+    background-color: #e8e8e8;
+}
+
+.main-content {
+    position: relative;
+    min-height: 100vh;
+    top: 0;
+    left: 300px;
+    width: calc(100vw - 300px);
+    padding: 1rem;
+  }
+
+.sidebar .tabs {
+    padding: 0.5rem 1.3rem 0;
+    background-color: #cecece;
+}
+
+.sidebar .tabs i {
+    background-color: #e8e8e8;
+    font-size: 135%;
+    height: 2.1rem;
+    width: 3rem;
+    color: #7b7b7b;
+    text-align: center;
+    padding: 0.4rem 0;
+    border-radius: 8px 8px 0 0;
+}
+
+.sidebar .logo {
+    padding: 2rem 10%;
+}
+
+.sidebar .logo span {
+    font-family: "Oswald", sans-serif;
+    font-size: 2.5rem;
+    color: #4a4a4a;
+    animation: fadeInAnimation ease 1s;
+}
+
+.user img,
+.user .caption {
+    display: block;
+    width: 100%;
+    padding: 0 10%;
+    animation: fadeInAnimation ease 1s;
+}
+
+.sidebar ul {
+    padding: 2rem 1rem;
+}
+
+.sidebar ul li {
+    list-style-type: none;
+    position: relative;
+    width: 90%;
+    margin: 0.1rem auto;
+    line-height: 50px
+}
+
+.sidebar ul li a {
+    color: #4a4a4a;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 0.8rem;
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+
+.sidebar ul li a:hover {
+    background-color: #eeeeee;
+    color: #323232;
+    transition: 0.3s ease;
+}
+
+.sidebar ul li a i {
+    min-width: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.sidebar .this-website {
+    display: flex;
+    height: 50vh;
+    font-weight: 300;
+    margin-left: 1.2rem;
+    align-items: flex-end;
+}
+
+.sidebar.pages .aboutme {
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    animation: fadeInAnimation ease 1s;
+}
+
+.sidebar.aboutme .pages {
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    animation: fadeInAnimation ease 1s;
+}
+
+
+.sidebar.aboutme #pages-btn {
+    cursor: pointer;
+    background-color: #cecece;
+}
+
+.sidebar.aboutme #pages-btn:hover,
+.sidebar.aboutme #aboutme-btn {
+    color: #5b5b5b;
+}
+
+.sidebar.pages #aboutme-btn {
+    cursor: pointer;
+    background-color: #cecece;
+}
+
+.sidebar.pages #aboutme-btn:hover,
+.sidebar.pages #pages-btn {
+    color: #5b5b5b;
+}
+
+@media (max-width: 800px) {
+    
+    .sidebar {
+        height: 350px;
+        width: 100vw;
+    }
+    
+    .main-content {
+        top: 350px;
+        left: 0;
+        width: 100vw;
+        padding: 1rem;
+    }
+    
+    
+    .user img {
+        vertical-align: text-top;
+        display: inline;
+        width: 150px;
+        height: 150px;
+        margin-left: 5%;
+        padding: 0;
+        object-fit: none;
+        object-position: 40% 15%;
+        animation: fadeInAnimation ease 1s;
+    }
+    
+    .user {
+        display: flex;
+    }
+        
+    .user .caption {
+        vertical-align: text-top;
+        padding: 0 1rem;
+        width: auto;
+        display: inline-block;
+        animation: fadeInAnimation ease 1s;
+    }
+
+}
+
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOutAnimation {
+    100% {
+        opacity: 1;
+    }
+    0% {
+        opacity: 0;
+    }
+}

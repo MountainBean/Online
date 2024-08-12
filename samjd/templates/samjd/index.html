@@ -1,0 +1,37 @@
+{% extends "samjd/base.html" %}
+{% load static %}
+
+{% block title %}
+    Samuel J Drew
+{% endblock title %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "samjd/index.css" %}">
+{% endblock css_files %}
+
+{% block content %}
+<div class="construction">
+    <h1>What's new?</h1>
+    <ul>
+        {% for entry in entries %}
+        <a href="{{ entry.link }}">
+            <li>
+                <div>
+                    <h3>{{ entry.title|truncatewords:6 }}</h3>
+                    <p>{{ entry.summary|truncatewords:20 }}</p>
+                </div>
+            </li>
+        </a>
+        {% endfor %}
+        <a class="call-to-blog" href="https://blog.mountainbean.online/">
+            <li>
+                <div>
+                    <p>Go to blog...</p>
+                </div>
+            </li>
+        </a>
+    </ul>
+    <hr class="hr-solid">
+
+</div>
+{% endblock content %}
