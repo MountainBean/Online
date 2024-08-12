@@ -4,6 +4,7 @@ from feedparser import parse
 
 
 def starting_page(request):
+    print("parsing for blog posts")
     feed = parse("https://blog.mountainbean.online/rss.xml")
     top_five = feed.entries[:5]
     return render(request, "samjd/index.html", {
