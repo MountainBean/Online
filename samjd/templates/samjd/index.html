@@ -14,11 +14,11 @@
     <h1>What's new?</h1>
     <ul>
         {% for entry in entries %}
-        <a href="{{ entry.link }}">
+        <a href="{{ entry.node.url }}">
             <li>
                 <div>
-                    <h3>{{ entry.title|truncatewords:6 }}</h3>
-                    <p>{{ entry.summary|truncatewords:20 }}</p>
+                    <h3>{{ entry.node.title|truncatewords:6 }}</h3>
+                    <p>{{ entry.node.brief|truncatewords:20 }}</p>
                 </div>
             </li>
         </a>
