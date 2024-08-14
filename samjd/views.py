@@ -7,7 +7,6 @@ from ipware import get_client_ip
 def starting_page(request):
     top_five = None
     ip, isroutable = get_client_ip(request)
-    print(f"new request from {ip=}. {isroutable=}")
     if isroutable or ip == "127.0.0.1":
         print("parsing for blog posts")
         feed = parse("https://blog.mountainbean.online/rss.xml")
