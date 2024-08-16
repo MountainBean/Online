@@ -35,3 +35,7 @@ def starting_page(request):
     return render(request, "samjd/index.html", {
         "entries": five_latest
     })
+
+
+# def projects_page(request):
+#     return render(request, "samjd/projects.html")

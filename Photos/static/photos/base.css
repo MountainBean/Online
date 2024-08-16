@@ -1,34 +1,32 @@
 
 * {
-    box-sizing: border-box;
-}
-
-html {
-    font-family: 'Open Sans', 'Lato', sans-serif;
-}
-
-body {
     margin: 0;
+    box-sizing: border-box;
+    font-family: "Oswald", sans-serif;
 }
 
 h1,
 h2,
 h3 {
-  font-family: 'Lato', sans-serif;
-  font-weight: bold;
+    color: #4a4a4a;
 }
 
 #main-navigation {
-    background: linear-gradient(to right top, #FFBF00, #d49f00);
-    padding: 1rem 12%;
+    background-color: #e8e8e8;
+    height: 150px;
 }
 
-#main-navigation h1 {
+#main-navigation div {
+    width: 100vw;
     display: flex;
+    justify-content: space-between;
+}
+
+#main-navigation span {
     height: 5rem;
-    justify-content: center;
-    top: 0;
-    left: 0;
+    font-size: 2.5rem;
+    padding: 1rem 4rem;
+    color: #4a4a4a;
 }
 
 #main-navigation nav {
@@ -39,22 +37,21 @@ h3 {
     align-items: center;
     padding: 0 5%;
     position: absolute;
-    top: 4rem;
+    font-size: 1.2rem;
     left: 0;
 }
 
 #main-navigation a {
     text-decoration: none;
-    color: white;
-    font-weight: bold;
+    color: #4a4a4a;
 }
   
 #main-navigation a:hover,
 #main-navigation a:active {
-    color: #cf79f1;
+    color: #3a3a3a;
 }
   
 #main-navigation h1 a:hover,
 #main-navigation h1 a:active {
-    color: white;
+    color: #313131;
 }

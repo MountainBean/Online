@@ -1,11 +1,11 @@
 .photo_post {
-  align-items: center;
-  text-align: center;
+    align-items: center;
+    text-align: center;
 }
 
 .photo_post img {
-  width: 20rem;
-  height: auto;
-  border: 5px solid white;
-  margin-bottom: 1rem;
+    width: 20rem;
+    height: auto;
+    border: 5px solid white;
+    margin-bottom: 1rem;
 }
