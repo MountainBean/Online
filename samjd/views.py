@@ -7,9 +7,11 @@ import json
 blog_query = '''
 query Publication {
     publication(host: "blog.mountainbean.online") {
+        id
         posts(first: 5) {
             edges {
                 node {
+                    id
                     title
                     brief
                     url
