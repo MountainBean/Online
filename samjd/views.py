@@ -24,7 +24,7 @@ query Publication {
 
 
 def starting_page(request):
-    top_five = None
+    five_latest = None
     ip, isroutable = get_client_ip(request)
     if isroutable or ip == "127.0.0.1":
         print("parsing for blog posts")
@@ -34,6 +34,8 @@ def starting_page(request):
         five_latest = json.loads(
             blog_response.content
         )['data']['publication']['posts']['edges']
+    else:
+        print(f"Unable to fetch blog posts. {ip=}, {isroutable=}")
     return render(request, "samjd/index.html", {
         "entries": five_latest
     })
