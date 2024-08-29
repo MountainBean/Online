@@ -1,0 +1,20 @@
+[Unit]
+Description=gunicorn daemon
+Requires=gunicorn.socket
+After=network.target
+
+[Service]
+User=server
+Group=www-data
+WorkingDirectory=/home/server/Website
+ExecStart=/home/server/Website/.venv/bin/gunicorn \
+          --access-logfile - \
+          --workers 1 \
+          --threads 15 \
+          --bind unix:/run/gunicorn.sock \
+          Online.wsgi:application
+          --env DJANGO_WEBSITE_ENVIRONMENT=PROD \
+          --env DJ_SECRET_KEY=$DJ_SECRET_KEY
+
+[Install]
+WantedBy=multi-user.target
