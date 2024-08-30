@@ -36,13 +36,8 @@ python3.11 -m venv .venv
 
 python3.11 -m pip install -r requirements.txt
 
-sudo adduser server
-sudo groupadd www-data
-
 sudo cp .ec2config/gunicorn.{socket,service} /etc/systemd/system/
-chown www-data:www-data /etc/systemd/system/gunicorn.service
-chown www-data:www-data /etc/systemd/system/gunicorn.socket
-chown www-data:www-data -R Website/
+sudo cp .ec2config/ngix.conf /etc/nginx/conf.d/Online.conf
 
 
 sudo systemctl start gunicorn.socket
