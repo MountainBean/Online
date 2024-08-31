@@ -11,7 +11,7 @@ cat <<EOT >> change_batch.json
     "Changes": [{
     "Action": "UPSERT",
         "ResourceRecordSet": {
-            "Name": "spot.mountainbean.online",
+            "Name": "mountainbean.online",
             "Type": "A",
             "TTL": 300,
             "ResourceRecords": [{ "Value": "$PUBLIC_IP"}]
@@ -19,8 +19,11 @@ cat <<EOT >> change_batch.json
 }
 EOT
 aws route53 change-resource-record-sets --hosted-zone-id Z08242151MWOY90HMWF69 --change-batch file://change_batch.json
+sudo rm change_batch.json
 
 sudo groupadd www-data
+
+cd /home/ec2-user
 
 aws s3api get-object\
  --bucket website-source-artifacts-manual-in-console\
@@ -50,14 +53,14 @@ After=network.target
 User=ec2-user
 Group=www-data
 WorkingDirectory=/home/ec2-user/Website
-ExecStart=/home/ec2-user/Website/.venv/bin/gunicorn \
-          --access-logfile - \
-          --workers 1 \
-          --threads 15 \
-          --bind unix:/run/gunicorn.sock \
-          Online.wsgi:application \
-          --env DJANGO_WEBSITE_ENVIRONMENT=PROD \
-          --env DJ_SECRET_KEY=$DJ_SECRET_KEY
+ExecStart=/home/ec2-user/Website/.venv/bin/gunicorn \\
+          --access-logfile - \\
+          --workers 1 \\
+          --threads 15 \\
+          --bind unix:/run/gunicorn.sock \\
+          Online.wsgi:application \\
+          --env DJANGO_WEBSITE_ENVIRONMENT=PROD \\
+          --env DJ_SECRET_KEY=$DJ_SECRET_KEY \\
 
 [Install]
 WantedBy=multi-user.target
@@ -81,3 +84,11 @@ sudo cp .ec2config/nginx.conf /etc/nginx/conf.d/Online.conf
 sudo systemctl start gunicorn.socket
 sudo systemctl enable gunicorn.socket
 sudo systemctl restart nginx
+
+sudo python3.11 -m venv /opt/certbot/
+sudo /opt/certbot/bin/pip install --upgrade pip
+
+sudo /opt/certbot/bin/pip install certbot certbot-nginx
+
+sudo ln -s /opt/certbot/bin/certbot /usr/bin/certbot
+sudo certbot --nginx -d mountainbean.online -n --agree-tos --email sambo2@live.com.au
