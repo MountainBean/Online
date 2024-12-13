@@ -6,8 +6,8 @@ on:
 
 env:
   DJANGO_WEBSITE_ENVIRONMENT: "BUILD"
-  S3_WRITE_USER_ACCESS_KEY: ${{ secrets.S3_WRITE_USER_ACCESS_KEY }}
-  S3_WRITE_SECRET_ACCESS_KEY: ${{ secrets.S3_WRITE_SECRET_ACCESS_KEY }}
+  AWS_ACCESS_KEY: ${{ secrets.UPLOAD_WEBSITE_CODE_PACKAGES_ACCESS_KEY }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.UPLOAD_WEBSITE_CODE_PACKAGES_SECRET_ACCESS_KEY }}
 
 jobs:
   build:
@@ -17,7 +17,7 @@ jobs:
     - name: Install Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.12' 
+        python-version: '3.11' 
     
     - name: Install Django
       run: pip install django django-storages boto3 pillow
@@ -34,5 +34,23 @@ jobs:
       run: python manage.py collectstatic --no-input
 
     - name: Generate deployment package
-      run: zip -r deploy.zip . -x '*.git*' -x '**/static/*'
+      run: zip -Ar '${{ env.version }}-latest' . -x '*.git*' -x '**/static/*'
 
+    - name: Upload source package to bucket
+      run: |
+        export AWS_ACCESS_KEY_ID='${{ env.AWS_ACCESS_KEY }}'
+        export AWS_SECRET_ACCESS_KEY='${{ env.AWS_SECRET_ACCESS_KEY }}'
+        export AWS_DEFAULT_REGION=ap-southeast-2
+        export OLD_PACKAGE=`aws s3api list-objects --bucket website-source-packages-github-actions-upload | jq -r '.Contents[].Key | select( endswith("latest") )'`
+        aws s3 cp '${{ env.version }}-latest' 's3://website-source-packages-github-actions-upload/${{ env.version }}-latest'
+        aws s3 rm 's3://website-source-packages-github-actions-upload/$OLD_PACKAGE'
+        export WEB_INSTANCE=`aws ec2 describe-spot-instance-requests --no-paginate | jq '.SpotInstanceRequests.[0].InstanceId'`
+        aws ec2 modify-spot-fleet-request \
+          --spot-fleet-request-id sfr-af22f6b6-e582-428a-841f-ae483c4614a0 \
+          --target-capacity 2
+        sleep 180s
+        aws ec2 modify-spot-fleet-request \
+          --spot-fleet-request-id sfr-af22f6b6-e582-428a-841f-ae483c4614a0 \
+          --target-capacity 1 \
+          --excess-capacity-termination-policy noTermination
+        aws ec2 terminate-instance --instance-ids $WEB_INSTANCE
