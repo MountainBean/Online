@@ -26,8 +26,8 @@ sudo groupadd www-data
 cd /home/ec2-user
 
 aws s3api get-object\
- --bucket website-source-artifacts-manual-in-console\
- --key `aws s3api list-objects --bucket website-source-artifacts-manual-in-console | jq -r '.Contents[].Key | select( endswith("latest") )'`\
+ --bucket website-source-packages-github-actions-upload \
+ --key `aws s3api list-objects --bucket website-source-packages-github-actions-upload | jq -r '.Contents[].Key | select( endswith("latest") )'`\
  appfiles.zip
 
 unzip appfiles.zip -d Website
