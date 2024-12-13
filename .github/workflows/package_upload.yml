@@ -56,7 +56,7 @@ jobs:
         AWS_DEFAULT_REGION: ap-southeast-2
       run: |
         aws ec2 describe-spot-instance-requests --no-paginate --filters Name=state,Values=active | jq .
-        echo "WEB_INSTANCE=`aws ec2 describe-spot-instance-requests --no-paginate --filters Name=state,Values=active | jq '.SpotInstanceRequests[0].InstanceId'`" >> "$GITHUB_ENV"
+        echo "WEB_INSTANCE=`aws ec2 describe-spot-instance-requests --no-paginate --filters Name=state,Values=active | jq -r '.SpotInstanceRequests[0].InstanceId'`" >> "$GITHUB_ENV"
         aws ec2 modify-spot-fleet-request \
           --spot-fleet-request-id sfr-af22f6b6-e582-428a-841f-ae483c4614a0 \
           --target-capacity 2
