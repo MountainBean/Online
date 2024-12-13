@@ -48,6 +48,7 @@ jobs:
         export OLD_PACKAGE=`aws s3api list-objects --bucket website-source-packages-github-actions-upload | jq -r '.Contents[].Key | select( endswith("latest") )'`
         aws s3 cp '${{ env.version }}-latest' 's3://website-source-packages-github-actions-upload/${{ env.version }}-latest'
         aws s3 rm 's3://website-source-packages-github-actions-upload/$OLD_PACKAGE'
+        aws ec2 describe-spot-instance-requests --no-paginate | jq .
         export WEB_INSTANCE=`aws ec2 describe-spot-instance-requests --no-paginate | jq '.SpotInstanceRequests.[0].InstanceId'`
         aws ec2 modify-spot-fleet-request \
           --spot-fleet-request-id sfr-af22f6b6-e582-428a-841f-ae483c4614a0 \
