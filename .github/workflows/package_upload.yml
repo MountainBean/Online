@@ -72,4 +72,4 @@ jobs:
         aws ec2 modify-spot-fleet-request \
           --spot-fleet-request-id sfr-af22f6b6-e582-428a-841f-ae483c4614a0 \
           --target-capacity 1
-        aws ec2 terminate-instances --instance-ids '${{ env.WEB_INSTANCE }}
+        aws ec2 terminate-instances --instance-ids '${{ env.WEB_INSTANCE }}'
