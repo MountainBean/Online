@@ -32,7 +32,8 @@ DEBUG = False if DJANGO_WEBSITE_ENVIRONMENT == "PROD" else True
 
 ALLOWED_HOSTS = [
     "mountainbean.online",
-    gethostbyname(gethostname())
+    gethostbyname(gethostname()),
+    "spot.mountainbean.online"
 ]
 if DJANGO_WEBSITE_ENVIRONMENT != "PROD":
     ALLOWED_HOSTS.append("localhost")
