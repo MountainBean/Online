@@ -32,7 +32,7 @@ jobs:
       
     - name: Collect static files
       env: 
-        AWS_ACCESS_KEY: ${{ secrets.UPLOAD_WEBSITE_CODE_PACKAGES_ACCESS_KEY }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.UPLOAD_WEBSITE_CODE_PACKAGES_ACCESS_KEY }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.UPLOAD_WEBSITE_CODE_PACKAGES_SECRET_ACCESS_KEY }}
         AWS_DEFAULT_REGION: ap-southeast-2
       run: python manage.py collectstatic --no-input
