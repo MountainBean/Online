@@ -31,6 +31,7 @@ SECRET_KEY = getenv(
 DEBUG = False if DJANGO_WEBSITE_ENVIRONMENT == "PROD" else True
 
 ALLOWED_HOSTS = [
+    "samjdrew.com",
     "mountainbean.online",
     gethostbyname(gethostname()),
     "spot.mountainbean.online"

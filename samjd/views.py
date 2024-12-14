@@ -6,7 +6,7 @@ import json
 
 blog_query = '''
 query Publication {
-    publication(host: "blog.mountainbean.online") {
+    publication(host: "blog.samjdrew.com") {
         id
         posts(first: 5) {
             edges {
