@@ -11,14 +11,14 @@ cat <<EOT >> change_batch.json
     "Changes": [{
     "Action": "UPSERT",
         "ResourceRecordSet": {
-            "Name": "mountainbean.online",
+            "Name": "samjdrew.com",
             "Type": "A",
             "TTL": 300,
             "ResourceRecords": [{ "Value": "$PUBLIC_IP"}]
 }}]
 }
 EOT
-aws route53 change-resource-record-sets --hosted-zone-id Z08242151MWOY90HMWF69 --change-batch file://change_batch.json
+aws route53 change-resource-record-sets --hosted-zone-id Z03223773CVJD03IVOMVO --change-batch file://change_batch.json
 sudo rm change_batch.json
 
 sudo groupadd www-data
@@ -91,4 +91,4 @@ sudo /opt/certbot/bin/pip install --upgrade pip
 sudo /opt/certbot/bin/pip install certbot certbot-nginx
 
 sudo ln -s /opt/certbot/bin/certbot /usr/bin/certbot
-sudo certbot --nginx -d mountainbean.online -n --agree-tos --email sambo2@live.com.au
+sudo certbot --nginx -d samjdrew.com -n --agree-tos --email sambo2@live.com.au
