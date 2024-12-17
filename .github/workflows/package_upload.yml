@@ -47,7 +47,7 @@ jobs:
         export AWS_DEFAULT_REGION=ap-southeast-2
         export OLD_PACKAGE=`aws s3api list-objects --bucket website-source-packages-github-actions-upload | jq -r '.Contents[].Key | select( endswith("latest") )'`
         aws s3 cp '${{ env.version }}-latest' 's3://website-source-packages-github-actions-upload/${{ env.version }}-latest'
-        aws s3 rm s3://website-source-packages-github-actions-upload/$OLD_PACKAGE
+        aws s3 mv s3://website-source-packages-github-actions-upload/$OLD_PACKAGE s3://website-source-packages-github-actions-upload/${OLD_PACKAGE::-7}
 
     - name: start new website instance
       env:
