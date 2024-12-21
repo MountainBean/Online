@@ -55,8 +55,8 @@ Group=www-data
 WorkingDirectory=/home/ec2-user/Website
 ExecStart=/home/ec2-user/Website/.venv/bin/gunicorn \\
           --access-logfile - \\
-          --workers 1 \\
-          --threads 15 \\
+          --workers 2 \\
+          --threads 4 \\
           --bind unix:/run/gunicorn.sock \\
           Online.wsgi:application \\
           --env DJANGO_WEBSITE_ENVIRONMENT=PROD \\
