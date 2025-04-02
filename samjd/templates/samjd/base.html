@@ -17,10 +17,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="{% static "samjd/base.css" %}">
+    <link rel="stylesheet" href="{% static "samjd/base.css" %}?ver=2">
     {% block css_files %}{% endblock css_files %}
 </head>
 <body>
+<div class="everything">
     <div class="sidebar aboutme">
         <div class="tabs">
             <i class="bx bx-menu" id="aboutme-btn"></i>
@@ -28,22 +29,24 @@
         </div>
         <div class="top aboutme">
             <div class="logo">
-                <span>Sam j Drew</span>
+                <a href="{% url "home-starting-page" %}">
+                    <span>Sam j Drew</span>
+                </a>
             </div>
         </div>
         <div class="user aboutme">
             <img src="{% static "samjd/images/samjd_srsly.jpg" %}" alt="about-me">
-            <p class="caption">I'm Sam Drew, a software engineer in Wellington</p>
+            <p class="caption">I'm Sam Drew, software engineer based in Wellington, NZ / Aotearoa.</p>
         </div>
         <ul class="pages">
             <li>
-                <a class="disabled" href="#">
+                    <a href="{% url "projects-page" %}">
                     <i class="bx bxs-folder-open"></i>
                     <span class="nav-item">projects</span>
                 </a>
             </li>
             <li>
-                <a class="disabled" href="#">
+                        <a href="{% url "certs-page" %}">
                     <i class="bx bxs-id-card"></i>
                     <span class="nav-item">certifications</span>
                 </a>
@@ -67,7 +70,27 @@
     </div>
     <div class="main-content">
         {% block content %}{% endblock content %}
+        <hr class="hr-solid">
+        <div id="contacts">get in touch</div>
+        <div class="socials">
+            <a href="https://twitter.com/Samjdrew">
+                <i class='bx bxl-twitter'></i>
+            </a>
+            <a href="https://github.com/MountainBean">
+                <i class='bx bxl-github'></i>
+            </a>
+            <a href="https://hashnode.com/@SamDrew">
+                <svg class="hashnode-svg" width="337" height="337" viewBox="0 0 337 337" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M23.155 112.598c-30.873 30.874-30.873 80.93 0 111.804l89.443 89.443c30.874 30.873 80.93 30.873 111.804 0l89.443-89.443c30.873-30.874 30.873-80.93 0-111.804l-89.443-89.443c-30.874-30.873-80.93-30.873-111.804 0l-89.443 89.443zm184.476 95.033c21.612-21.611 21.612-56.651 0-78.262-21.611-21.612-56.651-21.612-78.262 0-21.612 21.611-21.612 56.651 0 78.262 21.611 21.612 56.651 21.612 78.262 0z" fill="#5a5a5a"/>
+                </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/samuel-j-drew/">
+                <i class='bx bxl-linkedin-square'></i>
+            </a>
+        </div>
     </div>
+
+</div>
 </body>
 <script>
     let aboutmebtn = document.querySelector('#aboutme-btn');
@@ -86,6 +109,7 @@
             sidebar.classList.toggle('pages');
         };
     };
+    {% block script %}{% endblock script %}
 
 </script>
 </html>

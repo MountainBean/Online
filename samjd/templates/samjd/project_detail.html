@@ -1,0 +1,28 @@
+{% extends "samjd/base.html" %}
+{% load static %}
+{% load samjd_extras %}
+
+{% block title %}
+    Samuel J Drew
+{% endblock title %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "samjd/project_detail.css" %}">
+{% endblock css_files %}
+
+{% block content %}
+<div class="project">
+    <h2>{{ project.title }}</h2>
+    {% if project.subheading %}
+    <h4>{{ project.subheading }}</h4>
+    {% endif %}
+        <div class="data_list">
+            {{ data|safe }}
+        </div>
+    {{ project.text|render_markdown }}
+</div>
+{% endblock content %}
+{% block script %}
+sidebar.classList.toggle('aboutme');
+sidebar.classList.toggle('pages');
+{% endblock script %}

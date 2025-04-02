@@ -1,8 +1,20 @@
 from datetime import date
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from ipware import get_client_ip
-import requests
+from .models import Project, Cert
 import json
+import requests
+
+class PostEntry:
+
+    id = 0
+    def __init__(self) -> None:
+        self.id = PostEntry.id
+        PostEntry.id = PostEntry.id + 1
+        self.title = f"New Post {self.id}", 
+        self.brief = "lorem ipsum..."
+        self.url = "#"
+
 
 blog_query = '''
 query Publication {
@@ -41,5 +53,29 @@ def starting_page(request):
     })
 
 
-# def projects_page(request):
-#     return render(request, "samjd/projects.html")
+def projects_page(request):
+    projects = Project.objects.all().order_by("-published_date")
+
+    return render(request, "samjd/projects.html", {
+        "projects": projects 
+    })
+
+
+def project_detail(request, slug):
+    target_project = get_object_or_404(Project, slug=slug)
+    index_body = ""
+    if Project.objects.get(title="OpenGL Experiments") == target_project:
+        index_html = requests.get("https://webgl.samjdrew.com/").text
+        index_body = index_html[index_html.find("<body>")+6:index_html.find("</body>")]
+
+    return render(request, "samjd/project_detail.html", {
+        "project": target_project,
+        "data": index_body
+    })
+
+def certs(request):
+    
+    return render(request, "samjd/certs.html", {
+        "certs": Cert.objects.all(),
+    })
+

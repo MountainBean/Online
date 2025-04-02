@@ -1,0 +1,33 @@
+{% extends "samjd/base.html" %}
+{% load static %}
+
+{% block title %}
+    Samuel J Drew
+{% endblock title %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "samjd/certs.css" %}">
+{% endblock css_files %}
+
+{% block content %}
+<div class="data_list">
+    <h1>Certifications</h1>
+    <ul>
+        {% for cert in certs %}
+            <a href="{{ cert.url }}">
+                <li>
+                    <div>
+                        <img src="{{ cert.image }}" alt="cert image">
+                        <h3>{{ cert.title }}</h3>
+                    </div>
+                </li>
+            </a>
+        {% endfor %}
+    </ul>
+
+</div>
+{% endblock content %}
+{% block script %}
+sidebar.classList.toggle('aboutme');
+sidebar.classList.toggle('pages');
+{% endblock script %}
