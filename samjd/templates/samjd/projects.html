@@ -23,7 +23,7 @@
                         {% if project.subheading %}
                         <p><strong>{{ project.subheading }}</strong></p>
                         {% endif %}
-                        <p>{{ project.blurb|truncatechars_html:512 }}</p>
+                        <p>{{ project.blurb|render_markdown|truncatechars_html:512 }}</p>
                     </div>
                 </li>
             </a>

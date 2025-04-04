@@ -12,6 +12,14 @@ code {
     margin-top: 2rem;
 }
 
+.construction p {
+    font-size: 1.5rem;
+}
+
+.construction a {
+    text-decoration: none;
+}
+
 .construction ul {
     margin-top: 4rem;
     display: flex;
@@ -91,8 +99,11 @@ code {
 }
 
 .pagelist ul img {
-    max-height: 10rem;
-    width: 100%;
+    display: block;
+    margin: auto;
+    height: 10rem;
+    max-width: 100%;
+    
 }
 
 .pagelist ul a {
@@ -172,5 +183,4 @@ code {
     }
 
 }
-
 

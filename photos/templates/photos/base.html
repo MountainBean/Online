@@ -8,21 +8,45 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>{% block title %}{% endblock title %}</title>
-    <link rel="stylesheet" href="{% static "photos/base.css" %}">
+    <link rel="stylesheet" href="{% static "photos/base.css" %}?ver=2">
     {% block css_files %}{% endblock css_files %}
 </head>
 <body>
     <header id="main-navigation">
         <div>
-            <span><a href="{% url "starting-page" %}">Sam j Drew</a></span>
+            <span><a href="{% url "home-starting-page" %}">Sam j Drew</a></span>
         </div>
         <nav>
             <a href="{% url "home-starting-page" %}">Home</a>
             <a href="{% url "all-photos-page" %}">All Photos</a>
-            <a href="{% url "starting-page" %}">Coming soon...</a>
         </nav>
     </header>
+    <div class="main-content">
     {% block content %}{% endblock content %}
+    </div>
+    <div class="license">
+        <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://samjdrew.com/photos/all_photos">Samuel J Drew Photography</a>
+        licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0</a></p>
+    </div>
+    <hr class="hr-solid">
+    <div id="contacts">get in touch</div>
+    <div class="socials">
+        <a href="https://twitter.com/Samjdrew">
+            <i class='bx bxl-twitter'></i>
+        </a>
+        <a href="https://github.com/MountainBean">
+            <i class='bx bxl-github'></i>
+        </a>
+        <a href="https://hashnode.com/@SamDrew">
+            <svg class="hashnode-svg" width="337" height="337" viewBox="0 0 337 337" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M23.155 112.598c-30.873 30.874-30.873 80.93 0 111.804l89.443 89.443c30.874 30.873 80.93 30.873 111.804 0l89.443-89.443c30.873-30.874 30.873-80.93 0-111.804l-89.443-89.443c-30.874-30.873-80.93-30.873-111.804 0l-89.443 89.443zm184.476 95.033c21.612-21.611 21.612-56.651 0-78.262-21.611-21.612-56.651-21.612-78.262 0-21.612 21.611-21.612 56.651 0 78.262 21.611 21.612 56.651 21.612 78.262 0z" fill="#5a5a5a"/>
+            </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/samuel-j-drew/">
+            <i class='bx bxl-linkedin-square'></i>
+        </a>
+    </div>
 </body>
 </html>

@@ -6,11 +6,14 @@
 {% endblock title %}
 
 {% block css_files %}
-<link rel="stylesheet" href="{% static "samjd/index.css" %}?ver=2">
+<link rel="stylesheet" href="{% static "samjd/index.css" %}?ver=3">
 {% endblock css_files %}
 
 {% block content %}
 <div class="construction">
+    <h1>What have I been working on?</h1>
+        <p><a href="{% url "projects-page" %}">Go to my projects...</a></p>
+    <hr class="hr-solid">
     <h1>Latest Posts</h1>
     <ul>
         {% for entry in entries %}

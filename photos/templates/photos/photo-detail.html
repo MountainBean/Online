@@ -7,15 +7,14 @@
 {% endblock title %}
 
 {% block css_files %}
-    <link rel="stylesheet" href="{% static "photos/photo-detail.css" %}">
+    <link rel="stylesheet" href="{% static "photos/photo-detail.css" %}?ver=2">
 {% endblock css_files %}
 
 {% block content %}
-    <section id="summary">
-        <h2>{{ post.title }}</h2>
-        <article class="big_photo">
+    <div id="summary">
+        <section class="big_photo">
             <img src="{{ photo.image.url }}" alt="{{ photo.title }}">
-        </article>
+        </section>
         <article class="big_photo_details">
             <div class="big_photo_details__div_left">
                 <p>"{{ photo.title }}"</p>
@@ -26,5 +25,5 @@
                 <p>{{ photo.location }}</p>
             </div>
         </article>
-    </section>
+    </div>
 {% endblock content %}

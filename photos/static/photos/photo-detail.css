@@ -1,10 +1,5 @@
-#summary li {
-    flex: 1;
-    display: flex;
-}
-
 .big_photo img {
-    margin: 0 0 0;
+    margin: 2rem 0 0;
     padding: 0 8vw 0;
     width: 100%;
     height: auto;
@@ -24,12 +19,14 @@
     padding: 0 8vw;
     text-align: left;
     font-style: italic;
+    color: #5a5a5a;
 }
 
 .big_photo_details__div_right p {
     margin: 0;
     padding: 0 8vw;
     text-align: right;
+    color: #5a5a5a;
 }
 
 .big_photo_details div {

@@ -7,7 +7,7 @@
 {% endblock title %}
 
 {% block css_files %}
-<link rel="stylesheet" href="{% static "samjd/project_detail.css" %}">
+<link rel="stylesheet" href="{% static "samjd/project_detail.css" %}?ver=2">
 {% endblock css_files %}
 
 {% block content %}
@@ -15,6 +15,10 @@
     <h2>{{ project.title }}</h2>
     {% if project.subheading %}
     <h4>{{ project.subheading }}</h4>
+    {% if project.blurb %}
+    <i><p>{{ project.blurb|render_markdown }}</p></i>
+    {% endif %}
+    <hr class="hr-solid">
     {% endif %}
         <div class="data_list">
             {{ data|safe }}

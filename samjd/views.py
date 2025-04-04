@@ -64,8 +64,11 @@ def projects_page(request):
 def project_detail(request, slug):
     target_project = get_object_or_404(Project, slug=slug)
     index_body = ""
-    if Project.objects.get(title="OpenGL Experiments") == target_project:
+    if target_project.title == "Experimental OpenGL":
         index_html = requests.get("https://webgl.samjdrew.com/").text
+        index_body = index_html[index_html.find("<body>")+6:index_html.find("</body>")]
+    elif target_project.title == "LearnOpenGL.com Examples":
+        index_html = requests.get("https://webgl.samjdrew.com/webdata/demos_index").text
         index_body = index_html[index_html.find("<body>")+6:index_html.find("</body>")]
 
     return render(request, "samjd/project_detail.html", {
