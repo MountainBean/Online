@@ -1,0 +1,10 @@
+[Unit]
+Description=Monitor Spot instance interrutions
+
+[Service]
+ExecStart=/home/ec2-user/persist_certs.sh
+Restart=always
+User=ec2-user
+
+[Install]
+WantedBy=multi-user.target

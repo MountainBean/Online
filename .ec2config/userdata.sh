@@ -3,7 +3,7 @@
 METADATATOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"`
 INTERFACE_MAC=`curl http://169.254.169.254/latest/meta-data/mac -H "X-aws-ec2-metadata-token: $METADATATOKEN"`
 PUBLIC_IP=`curl http://169.254.169.254/latest/meta-data/network/interfaces/macs/$INTERFACE_MAC/public-ipv4s -H "X-aws-ec2-metadata-token: $METADATATOKEN"`
-DJ_SECRET_KEY=
+DJ_SECRET_KEY="ncq23rcowenfyo&Y*&Y728yoy2rcn13c92eyr73g"
 
 cat <<EOT >> change_batch.json
 {
@@ -80,9 +80,16 @@ EOT
 sudo cp gunicorn.{socket,service} /etc/systemd/system/
 sudo cp .ec2config/nginx.conf /etc/nginx/conf.d/Online.conf
 
+sudo chmod 777 .ec2config/spot_monitor.py
+sudo chmod 700 .ec2config/persist_certs.sh
+sudo cp .ec2config/spot_monitor.service /etc/systemd/system
 
-sudo systemctl start gunicorn.socket
+
+sudo systemctl enable spot_monitor.service
 sudo systemctl enable gunicorn.socket
+sudo systemctl start spot_monitor.service
+sudo systemctl start gunicorn.socket
+
 sudo systemctl restart nginx
 
 sudo python3.11 -m venv /opt/certbot/
@@ -91,4 +98,4 @@ sudo /opt/certbot/bin/pip install --upgrade pip
 sudo /opt/certbot/bin/pip install certbot certbot-nginx
 
 sudo ln -s /opt/certbot/bin/certbot /usr/bin/certbot
-sudo certbot --nginx -d samjdrew.com -n --agree-tos --email sambo2@live.com.au
+
