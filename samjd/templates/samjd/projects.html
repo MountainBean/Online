@@ -12,13 +12,35 @@
 
 {% block content %}
 <div class="pagelist">
-    <h1>What have I been up to?</h1>
+    <h2>What have I been up to?</h2>
     <ul>
-        {% for project in projects %}
+        {% for project in active_projects %}
             <a href="{% url "project-detail-page" slug=project.slug %}">
                 <li>
                     <div>
+                        {% if project.header_image %}
                         <img src="{{ project.header_image.image.url }}" alt="header image">
+                        {% endif %}
+                        <h3>{{ project.title }}</h3>
+                        {% if project.subheading %}
+                        <p><strong>{{ project.subheading }}</strong></p>
+                        {% endif %}
+                        <p>{{ project.blurb|render_markdown|truncatechars_html:512 }}</p>
+                    </div>
+                </li>
+            </a>
+        {% endfor %}
+    </ul>
+    <hr class="hr-solid">
+    <h2>Past Projects</h2>
+    <ul>
+        {% for project in old_projects %}
+            <a href="{% url "project-detail-page" slug=project.slug %}">
+                <li>
+                    <div>
+                        {% if project.header_image %}
+                        <img src="{{ project.header_image.image.url }}" alt="header image">
+                        {% endif %}
                         <h3>{{ project.title }}</h3>
                         {% if project.subheading %}
                         <p><strong>{{ project.subheading }}</strong></p>

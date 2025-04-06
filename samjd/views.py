@@ -54,10 +54,12 @@ def starting_page(request):
 
 
 def projects_page(request):
-    projects = Project.objects.all().order_by("-published_date")
+    active_projects = Project.objects.filter(status="active").order_by("-published_date")
+    old_projects = Project.objects.filter(status="inactive").order_by("-published_date")
 
     return render(request, "samjd/projects.html", {
-        "projects": projects 
+        "active_projects": active_projects,
+        "old_projects": old_projects
     })
 
 

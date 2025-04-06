@@ -12,9 +12,15 @@ class ProjectImage(models.Model):
     def __str__(self):
         return self.title
 
+
 class Project(models.Model):
+    status_choices = {
+        "active": "active",
+        "inactive": "inactive"
+    }
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
+    status = models.TextField(null=True, choices=status_choices)
     subheading = models.CharField(max_length=512, blank=True, null=True)
     header_image = ForeignKey(ProjectImage, on_delete=models.SET_NULL, blank=True, null=True)
     text = models.TextField()
