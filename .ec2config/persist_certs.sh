@@ -26,7 +26,10 @@ sudo mv "launch template in console.pem" /etc/ssh/ &&
 
         # check for renewal
         ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i "/etc/ssh/launch template in console.pem" ec2-user@$NEW_INSTANCE_IPv4 -t 'sudo certbot certificates &&
-        sudo certbot renew'
+        sudo certbot renew &&
+        sudo cp Website/.ec2config/nginx.conf /etc/nginx/conf.d/Online.conf &&
+        sudo systemctl restart nginx &&
+        sudo certbot --nginx -d samjdrew.com -n --agree-tos --email sambo2@live.com.au'
 
         sleep 30
 done

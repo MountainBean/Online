@@ -1,15 +1,5 @@
-.project h2 {
-  color: #5a5a5a;
-  font-size: 2.5rem;
-  margin: 3.5rem 0 1rem 0;
-}
-.project h4 {
-  color: #999999;
-  margin: 2rem 0 0 ;
-}
-
 .project .data_list ul {
-    margin-top: 4rem;
+    margin: 2rem 0;
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
@@ -59,7 +49,16 @@
 .project p:not(.data_list p) {
   color: #5a5a5a;
   font-family: calibri;
-  padding-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.project p a:not(.data_list p a) {
+  font-family: calibri;
+}
+
+.project ul li:not(.data_list ul li) {
+  color: #5a5a5a;
+  font-family: calibri;
 }
 
 .project li::marker {
@@ -73,6 +72,7 @@
 .project img:not(.data_list img) {
   max-width: 35rem;
   width: 100%;
+  margin: 1rem;
 }
 
 
