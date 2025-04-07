@@ -7,7 +7,7 @@
 {% endblock title %}
 
 {% block css_files %}
-<link rel="stylesheet" href="{% static "samjd/index.css" %}">
+<link rel="stylesheet" href="{% static "samjd/index.css" %}?ver=2">
 {% endblock css_files %}
 
 {% block content %}
@@ -17,11 +17,13 @@
         {% for project in active_projects %}
             <a href="{% url "project-detail-page" slug=project.slug %}">
                 <li>
-                    <div>
+                    <div class="pagelist_img_div">
                         {% if project.header_image %}
                         <img src="{{ project.header_image.image.url }}" alt="header image">
                         {% endif %}
-                        <h3>{{ project.title }}</h3>
+                    </div>
+                    <div>
+                        <h4>{{ project.title }}</h4>
                         {% if project.subheading %}
                         <p><strong>{{ project.subheading }}</strong></p>
                         {% endif %}
@@ -37,10 +39,12 @@
         {% for project in old_projects %}
             <a href="{% url "project-detail-page" slug=project.slug %}">
                 <li>
-                    <div>
+                    <div class="pagelist_img_div">
                         {% if project.header_image %}
                         <img src="{{ project.header_image.image.url }}" alt="header image">
                         {% endif %}
+                    </div>
+                    <div>
                         <h3>{{ project.title }}</h3>
                         {% if project.subheading %}
                         <p><strong>{{ project.subheading }}</strong></p>

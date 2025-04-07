@@ -56,6 +56,10 @@
   font-family: calibri;
 }
 
+.project ul a:not(.data_list p a) {
+  font-family: calibri;
+}
+
 .project ul li:not(.data_list ul li) {
   color: #5a5a5a;
   font-family: calibri;
@@ -71,7 +75,7 @@
 
 .project img:not(.data_list img) {
   max-width: 35rem;
-  width: 100%;
+  width: calc(100% - 2rem);
   margin: 1rem;
 }
 

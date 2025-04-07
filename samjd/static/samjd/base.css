@@ -274,6 +274,7 @@ html, body {
         object-fit: none;
         object-position: 40% 15%;
         animation: fadeInAnimation ease 1s;
+        flex: 0 0 auto;
     }
     
     .user {

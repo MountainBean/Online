@@ -98,10 +98,16 @@ code {
     list-style: none;
 }
 
-.pagelist ul img {
+.pagelist_img_div {
+    height: 10rem;
+    max-width: 100%;
+    display: block;
+}
+
+.pagelist_img_div img {
     display: block;
     margin: auto;
-    height: 10rem;
+    max-height: 100%;
     max-width: 100%;
     
 }
